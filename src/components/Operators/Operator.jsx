@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import BackspaceOutlinedIcon from '@mui/icons-material/BackspaceOutlined';
 import "./operator.css"
 
 const operator = () => {
   const [char, setChar] = useState("");
+  const [prevAns, setPrevAns] = useState("");
   const operands = ['%', '/', '*', '+', '-', '.'];
 
   //updating what we click
@@ -14,25 +16,34 @@ const operator = () => {
       return;
     }
     setChar(char.concat(e.target.name));
-
-    
   }
+
   const clear = () => {
     setChar("");
+    setPrevAns("");
   }
+
   const backspace = () => {
     setChar(char.slice(0, char.length - 1))
   }
 
-  const calculate = () => {
-    setChar(eval(char).toString())
+  const calculate = (e) => {
+    //no ending with operators while calculating
+    if (  
+      operands.includes(char.substr(char.length - 1))      
+    ) {
+      return;
+    }
+    setChar(eval(char).toString());
+    setPrevAns (eval(char).toString()) 
   }
-  
+
+ 
   return (
     <section className='operator'>
       <div className='box'>
         <div className='resultBox'>
-          <div className='prevResult'>{char}</div>
+          <div className='prevResult'>{prevAns}</div>
           {char ? <div className='currentResult'>{char}</div> :
             <div className='currentResult'>0</div>
           }
@@ -41,7 +52,7 @@ const operator = () => {
 
         <div className='buttonBox'>
             <button id='ac' onClick={clear}>AC</button>
-            <button id="backspace" onClick={backspace}>mi</button>
+            <button id="backspace" onClick={backspace}><BackspaceOutlinedIcon /></button>
             <button name="%" onClick={handleClick}>%</button>
             <button name="/" onClick={handleClick}>/</button>
 
