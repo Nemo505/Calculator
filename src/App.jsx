@@ -1,12 +1,11 @@
-import Dash from './components/Dash'
+import Dash from "./components/Dash";
 
 function App() {
-
   return (
     <>
-    <Dash />
+      <Dash />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
