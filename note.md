@@ -1,0 +1,7 @@
+# Website link
+
+Css 3D Glowing Cube
+<https://www.youtube.com/watch?v=nOdDtnHWaDo>
+
+Blob generator
+<https://lokesh-coder.github.io/blobs.app/?e=9&gw=5&se=675&g=c2e59c|64b3f4&o=0>
